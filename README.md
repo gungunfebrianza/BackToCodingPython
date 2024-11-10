@@ -4,6 +4,75 @@
 
 # Python on MacOS
 
+
+
+## Install Homebrew
+
+Homebrew is a popular package manager for macOS (and Linux). Here's how to install it:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+After installation, you'll need to add Homebrew to your PATH. For Apple Silicon Macs, run:
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Once installed, verify it's working with:
+
+```
+brew --version
+```
+
+
+
+----
+
+
+
+## Install Python via Homebrew
+
+If you want to install the specific Python version using Homebrew:
+
+```bash
+brew install python@3.12
+```
+
+Then you can make it your default Python:
+
+```bash
+echo 'alias python=/opt/homebrew/bin/python3' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Let me break down this code line by line:
+
+1. `echo` prints the text that follows it
+2. `alias python=/opt/homebrew/bin/python3` creates a shortcut: whenever you type `python`, it will use `/opt/homebrew/bin/python3` instead
+3. `>>` appends the text to a file (rather than overwriting it)
+4. `~/.zshrc` is your Zsh shell configuration file (~ means your home directory)
+5. `source` reloads the configuration file to apply changes immediately
+6. Without this command, you'd need to restart your terminal to see the changes
+
+Alternative ways to write this:
+
+```bash
+# Or edit .zshrc directly using a text editor:
+nano ~/.zshrc   # Add the alias line manually
+source ~/.zshrc
+```
+
+
+
+---
+
+
+
+## Check Python Installation
+
 Having multiple Python installations isn't necessarily a problem, but it's important to understand what you're working with:
 
 `/usr/bin/python3` is typically the system Python that comes pre-installed with macOS
@@ -20,6 +89,10 @@ which python3
 ```
 
 To avoid confusion, I recommend using virtual environments for your projects to isolate dependencies
+
+
+
+---
 
 
 
