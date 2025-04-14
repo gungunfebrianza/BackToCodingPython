@@ -237,6 +237,32 @@ Think of your computer like a big toy store, and Python versions are different t
 - **Flexibility**: Shims allow pyenv to dynamically select the correct Python version without altering your system’s `PATH` or requiring you to use full paths to Python executables.
 - **Isolation**: Each project can have its own Python version and dependencies without interfering with others.
 
+```mermaid
+flowchart TD
+    A[User Terminal] --> B[Shim Path]
+    B --> C{Pyenv Shim}
+    C --> D[Check Configuration]
+    D --> E[Project-specific version]
+    D --> F[Shell-specific version]
+    D --> G[System-wide default]
+    
+    E --> H[Select Python Version]
+    F --> H
+    G --> H
+    
+    H --> I[Python 3.8.10]
+    H --> J[Python 3.9.6]
+    H --> K[Python 3.10.2]
+    
+    style C fill:#f9d77e,stroke:#e8b828
+    style B fill:#a2d2ff,stroke:#5a9de8
+    style I fill:#aff8c9,stroke:#4dca6f
+    style J fill:#aff8c9,stroke:#4dca6f
+    style K fill:#aff8c9,stroke:#4dca6f
+```
+
+
+
 ---
 
 **How pyenv Determines the Python Version**
@@ -664,7 +690,7 @@ Switching to the Z Shell (zsh) can enhance your command-line experience with its
 
 **Find the path to zsh:**
 
-```
+```bash
 which zsh
 ```
 
@@ -674,13 +700,13 @@ This typically returns `/usr/bin/zsh` or `/bin/zsh`.
 
 Open the `/etc/shells` file in a text editor with root privileges and add the zsh path if it's not already present.
 
-```
+```bash
 sudo nano /etc/shells
 ```
 
 Add the line (replace with the correct path if different):
 
-```
+```shell
 /usr/bin/zsh
 ```
 
